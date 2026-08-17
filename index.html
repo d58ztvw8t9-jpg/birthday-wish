@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday My Love ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffe4ec,#fff5f8,#f5e6ff);color:#61243f;text-align:center}
+.page{display:none;min-height:100vh;padding:30px 20px;align-items:center;justify-content:center}
+.active{display:flex}
+.card{max-width:550px;width:100%;background:#ffffffd9;padding:35px 22px;border-radius:30px;box-shadow:0 15px 50px #8b416633}
+h1{font-size:55px;color:#922d59}h2{font-size:40px;color:#922d59}
+.heart{font-size:55px}
+button{border:0;border-radius:30px;padding:15px 24px;margin:8px;background:#a43d6b;color:white;font-size:15px;font-weight:bold}
+.option{display:block;width:100%;background:white;color:#702c4b;border:1px solid #efbfd2}
+.photo{height:150px;background:#f7cfdd;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:45px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.letter{text-align:left;background:#fff7fa;padding:20px;border-radius:20px;line-height:1.8;white-space:pre-wrap}
+.gift{font-size:90px}
+</style>
+</head>
+
+<body>
+
+<div id="home" class="page active">
+<div class="card">
+<div class="heart">❤️</div>
+<h1>Hey Birthday Boy…</h1>
+<p>Someone has a little surprise waiting for you. 🥹</p>
+<p>But first… you have to answer a few questions. 👀</p>
+<button onclick="start()">Start the surprise →</button>
+</div>
+</div>
+
+<div id="quiz" class="page">
+<div class="card">
+<p id="count"></p>
+<h2 id="question"></h2>
+<div id="answers"></div>
+</div>
+</div>
+
+<div id="memories" class="page">
+<div class="card">
+<div class="heart">📸</div>
+<h2>Our Little Memories</h2>
+<p>Some moments I wish I could pause forever. ❤️</p>
+
+<div class="gallery">
+<div class="photo">📷</div>
+<div class="photo">❤️</div>
+<div class="photo">🥹</div>
+<div class="photo">🫶</div>
+</div>
+
+<p>Add our real photos here soon. 💗</p>
+<button onclick="letter()">There's one more thing… 💌</button>
+</div>
+</div>
+
+<div id="letter" class="page">
+<div class="card">
+<h2>Happy Birthday, My Love ❤️</h2>
+<div class="letter" id="message"></div>
+<button onclick="gift()">One Last Surprise 🎁</button>
+</div>
+</div>
+
+<div id="gift" class="page">
+<div class="card">
+<div class="gift" onclick="openGift()">🎁</div>
+<h2>Open Your Gift</h2>
+<p>Tap the gift… 👀❤️</p>
+<div id="secret" style="display:none">
+<h2>You are my favourite person. ❤️</h2>
+<p>Here's to more laughs, more memories, more adventures and more of us. 🥹🫶</p>
+<p>I love you. ❤️</p>
+</div>
+</div>
+</div>
+
+<script>
+
+let questions=[
+["Before we start… how well do you think you know me? 👀❤️",
+["Pretty well 😌","I know everything about you 😎","Let's find out 🫣"]],
+
+["Will you answer every question honestly? 🥹",
+["Promise 🤞❤️","I'll try 😂","Maybe 👀"]],
+
+["Who is more annoying? 😂",
+["Me 😌","You 😭","Both of us 😂"]],
+
+["What would you choose for our perfect day? 🥰",
+["Movie night 🍿","Go somewhere together 🌎","Food + conversations ❤️","Anything with you 🫶"]],
+
+["If I said 'I miss you' at 2 AM, what would you do? 👀",
+["Call me immediately ❤️","Say I miss you too 🥹","Ask why I'm awake 😂"]],
+
+["Who is more dramatic? 😂",
+["Me 😌","You 😭","Both 😂"]],
+
+["Do I get to annoy you for the rest of your life? 😌❤️",
+["Yes 🥹","Obviously ❤️","Do I have a choice? 😂"]],
+
+["Are you ready for your actual birthday surprise? 🎁",
+["YESSSS 🎉","Open it already!! 😭❤️"]]
+];
+
+let current=0;
+
+function show(id){
+document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo(0,0);
+}
+
+function start(){
+current=0;
+showQuestion();
+}
+
+function showQuestion(){
+document.getElementById("count").innerText=
+"Question "+(current+1)+" of "+questions.length;
+
+document.getElementById("question").innerText=
+questions[current][0];
+
+let box=document.getElementById("answers");
+box.innerHTML="";
+
+questions[current][1].forEach(answer=>{
+let b=document.createElement("button");
+b.className="option";
+b.innerText=answer;
+b.onclick=next;
+box.appendChild(b);
+});
+}
+
+function next(){
+current++;
+if(current<questions.length){
+showQuestion();
+}else{
+show("memories");
+}
+}
+
+let text=`My love,
+
+Happy Birthday to the person who has become such a beautiful part of my life. ❤️
+
+I don't think I say it enough, but having you in my life means more to me than I can ever put into words.
+
+You've seen my happy days, my stupid moments, my overthinking, my random moods and everything in between… and somehow, you're still here. 🥹
+
+Some of my favourite memories aren't even the big ones. They're the tiny moments with you — the conversations, the laughs, the teasing and all the little things that mean so much to me.
+
+Thank you for being you.
+
+Thank you for making me smile, for listening to me, for putting up with me and for giving me so many memories I want to keep forever. ❤️
+
+I want more moments with you.
+
+More laughs.
+More late-night conversations.
+More pictures.
+More adventures.
+More memories.
+More of us. 🫶
+
+I hope this new year of your life brings you happiness, success, peace and everything your heart wishes for.
+
+And selfishly… I hope I get to be there for a lot of it. ❤️
+
+Happy Birthday, my love.
+
+I love you more than this little website could ever explain. 🥹❤️
+
+— Yours, always 💌`;
+
+function letter(){
+show("letter");
+
+let box=document.getElementById("message");
+box.innerText="";
+
+let i=0;
+
+function type(){
+if(i<text.length){
+box.innerText+=text.charAt(i);
+i++;
+setTimeout(type,15);
+}
+}
+
+type();
+}
+
+function gift(){
+show("gift");
+}
+
+function openGift(){
+document.getElementById("secret").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
