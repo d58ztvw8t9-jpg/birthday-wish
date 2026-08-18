@@ -48,15 +48,17 @@ button{border:0;border-radius:30px;padding:15px 24px;margin:8px;background:#a43d
 <p>Some moments I wish I could pause forever. ❤️</p>
 
 <div class="gallery">
-<div class="photo"><img src="IMG_5559.png"></div>
-<div class="photo"><img src="IMG_5560.png"></div>
-<div class="photo"><img src="IMG_5561.png"></div>
-<div class="photo"><img src="IMG_5563.png"></div>
-<div class="photo"><img src="IMG_5564.png"></div>
-<div class="photo"><img src="IMG_5565.png"></div>
+<button class="emoji" onclick="showPhoto(0)">📸</button>
+<button class="emoji" onclick="showPhoto(1)">❤️</button>
+<button class="emoji" onclick="showPhoto(2)">🥺</button>
+<button class="emoji" onclick="showPhoto(3)">🫶</button>
+<button class="emoji" onclick="showPhoto(4)">💗</button>
+<button class="emoji" onclick="showPhoto(5)">✨</button>
 </div>
 
-<p>Add our real photos here soon. 💗</p>
+<div id="photoBox" class="photoBox"></div>
+
+<p>Tap on the emojis. 💗</p>
 <button onclick="letter()">There's one more thing… 💌</button>
 </div>
 </div>
@@ -102,6 +104,20 @@ function show(id){
 document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 window.scrollTo(0,0);
+}
+
+  function showPhoto(i){
+  let box=document.getElementById("photoBox");
+  let photos=[
+    "IMG_5559.png",
+    "IMG_5560.png",
+    "IMG_5561.png",
+    "IMG_5563.png",
+    "IMG_5564.png",
+    "IMG_5565.png"
+  ];
+
+  box.innerHTML="<img src='"+photos[i]+"'>";
 }
 
 function start(){
@@ -170,7 +186,12 @@ Happy Birthday, my love.😘
 I love you more than this little website could ever explain. 🥹❤️
 
 — Yours, always 💌`;
-
+function showPhoto(n){
+let photos=["IMG_5559.png","IMG_5560.png","IMG_5561.png","IMG_5563.png","IMG_5564.png","IMG_5565.png"];
+let box=document.getElementById("photoBox");
+box.innerHTML="<img src='"+photos[n]+"' style='width:100%;height:100%;object-fit:cover;border-radius:15px;'>";
+box.style.display="block";
+}
 function letter(){
 show("letter");
 
